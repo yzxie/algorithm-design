@@ -1,10 +1,6 @@
-package tree.traversal;
+package tree;
 
-import tree.BinaryTree;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author xieyizun
@@ -220,22 +216,35 @@ public class BinaryTreeTraversal {
         }
     }
 
+    /**
+     * 树的层次遍历，时间复杂度为O(N)
+     * @param root
+     */
+    public void treeLevelTraversal(BinaryTree<Integer> root) {
+        if (root == null) {
+            return;
+        }
+
+        // 结合FIFO队列来实现
+        ArrayDeque<BinaryTree<Integer>> queue = new ArrayDeque<BinaryTree<Integer>>();
+        queue.offerLast(root);
+
+        while (!queue.isEmpty()) {
+            BinaryTree<Integer> ele = queue.pollFirst();
+            System.out.print(ele.val + ",");
+
+            if (ele.left != null) {
+                queue.offerLast(ele.left);
+            }
+
+            if (ele.right != null) {
+                queue.offerLast(ele.right);
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        BinaryTree<Integer> root = new BinaryTree<>(4);
-        BinaryTree<Integer> left = new BinaryTree<>(3);
-        BinaryTree<Integer> right = new BinaryTree<>(5);
-        root.left = left;
-        root.right = right;
-
-        BinaryTree<Integer> left1 = new BinaryTree<>(1);
-        BinaryTree<Integer> right1 = new BinaryTree<>(2);
-        left.left = left1;
-        left.right = right1;
-
-        BinaryTree<Integer> left2 = new BinaryTree<>(6);
-        BinaryTree<Integer> right2 = new BinaryTree<>(7);
-        right.left = left2;
-        right.right = right2;
+        BinaryTree<Integer> root = TreeBuilder.buildCommonTree();
 
         BinaryTreeTraversal treeTraversal = new BinaryTreeTraversal();
 
@@ -259,5 +268,9 @@ public class BinaryTreeTraversal {
         System.out.println();
         treeTraversal.postTraversal(root);
         System.out.println();
+
+        // 4,3,5,1,2,6,7
+        System.out.println("level: ");
+        treeTraversal.treeLevelTraversal(root);
     }
 }
