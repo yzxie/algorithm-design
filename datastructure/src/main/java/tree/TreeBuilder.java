@@ -7,7 +7,7 @@ package tree;
  */
 public class TreeBuilder {
 
-    public static BinaryTree<Integer> buildOrderBinaryTree(int[] elements) {
+    public static TreeNode<Integer> buildOrderBinaryTree(int[] elements) {
         return null;
     }
 
@@ -15,20 +15,20 @@ public class TreeBuilder {
      * 先序（root -> left -> right）遍历结果：4,3,1,2,5,6,7
      * @return
      */
-    public static BinaryTree<Integer> buildCommonTree() {
-        BinaryTree<Integer> root = new BinaryTree<>(4);
-        BinaryTree<Integer> left = new BinaryTree<>(3);
-        BinaryTree<Integer> right = new BinaryTree<>(5);
+    public static TreeNode<Integer> buildCommonTree() {
+        TreeNode<Integer> root = new TreeNode<>(4);
+        TreeNode<Integer> left = new TreeNode<>(3);
+        TreeNode<Integer> right = new TreeNode<>(5);
         root.left = left;
         root.right = right;
 
-        BinaryTree<Integer> left1 = new BinaryTree<>(1);
-        BinaryTree<Integer> right1 = new BinaryTree<>(2);
+        TreeNode<Integer> left1 = new TreeNode<>(1);
+        TreeNode<Integer> right1 = new TreeNode<>(2);
         left.left = left1;
         left.right = right1;
 
-        BinaryTree<Integer> left2 = new BinaryTree<>(6);
-        BinaryTree<Integer> right2 = new BinaryTree<>(7);
+        TreeNode<Integer> left2 = new TreeNode<>(6);
+        TreeNode<Integer> right2 = new TreeNode<>(7);
         right.left = left2;
         right.right = right2;
 

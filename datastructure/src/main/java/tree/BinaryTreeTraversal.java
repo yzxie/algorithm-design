@@ -13,7 +13,7 @@ public class BinaryTreeTraversal {
      * 先序遍历：root -> left -> right
      * @param root
      */
-    public void preTraversalRecursive(BinaryTree<Integer> root) {
+    public void preTraversalRecursive(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
@@ -33,15 +33,15 @@ public class BinaryTreeTraversal {
     }
 
     // 结合栈（后进先出）来实现：根先入栈，然后开始循环遍历：根节点出栈，先右子树入栈，然后是左子树入栈；左子树出栈...
-    public void preTraversal(BinaryTree<Integer> root) {
-        Stack<BinaryTree<Integer>> stack = new Stack<>();
+    public void preTraversal(TreeNode<Integer> root) {
+        Stack<TreeNode<Integer>> stack = new Stack<>();
         if (root == null) {
             return;
         }
         stack.push(root);
 
         while (!stack.isEmpty()) {
-            BinaryTree<Integer> current = stack.pop();
+            TreeNode<Integer> current = stack.pop();
 
             // root
             System.out.print(current.val + ",");
@@ -61,7 +61,7 @@ public class BinaryTreeTraversal {
      * 中序遍历：left -> root -> right
      * @param root
      */
-    public void midTraversalRecursive(BinaryTree<Integer> root) {
+    public void midTraversalRecursive(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
@@ -80,10 +80,10 @@ public class BinaryTreeTraversal {
         }
     }
 
-    public void midTraversal(BinaryTree<Integer> root) {
-        Stack<BinaryTree<Integer>> stack = new Stack<>();
+    public void midTraversal(TreeNode<Integer> root) {
+        Stack<TreeNode<Integer>> stack = new Stack<>();
         // 记录左右子树已经入过栈的根节点
-        Map<BinaryTree, Boolean> childIsInStack = new HashMap<>();
+        Map<TreeNode, Boolean> childIsInStack = new HashMap<>();
 
         if (root == null) {
             return;
@@ -111,7 +111,7 @@ public class BinaryTreeTraversal {
 
         while (!stack.isEmpty()) {
             // 出栈
-            BinaryTree<Integer> current = stack.pop();
+            TreeNode<Integer> current = stack.pop();
 
             if (current.left == null && current.right == null) {
                 System.out.print(current.val + ",");
@@ -143,7 +143,7 @@ public class BinaryTreeTraversal {
      * 后序遍历：left -> right -> root
      * @param root
      */
-    public void postTraversalRecursive(BinaryTree<Integer> root) {
+    public void postTraversalRecursive(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
@@ -162,10 +162,10 @@ public class BinaryTreeTraversal {
         System.out.print(root.val + ",");
     }
 
-    public void postTraversal(BinaryTree<Integer> root) {
-        Stack<BinaryTree<Integer>> stack = new Stack<>();
+    public void postTraversal(TreeNode<Integer> root) {
+        Stack<TreeNode<Integer>> stack = new Stack<>();
         // 记录左右子树已经入过栈的根节点
-        Map<BinaryTree, Boolean> childIsInStack = new HashMap<>();
+        Map<TreeNode, Boolean> childIsInStack = new HashMap<>();
 
         if (root == null) {
             return;
@@ -188,7 +188,7 @@ public class BinaryTreeTraversal {
 
         while (!stack.isEmpty()) {
             // 出栈
-            BinaryTree<Integer> current = stack.pop();
+            TreeNode<Integer> current = stack.pop();
 
             // 叶子节点
             if (current.left == null && current.right == null) {
@@ -220,17 +220,17 @@ public class BinaryTreeTraversal {
      * 树的层次遍历，时间复杂度为O(N)
      * @param root
      */
-    public void treeLevelTraversal(BinaryTree<Integer> root) {
+    public void treeLevelTraversal(TreeNode<Integer> root) {
         if (root == null) {
             return;
         }
 
         // 结合FIFO队列来实现
-        ArrayDeque<BinaryTree<Integer>> queue = new ArrayDeque<BinaryTree<Integer>>();
+        ArrayDeque<TreeNode<Integer>> queue = new ArrayDeque<TreeNode<Integer>>();
         queue.offerLast(root);
 
         while (!queue.isEmpty()) {
-            BinaryTree<Integer> ele = queue.pollFirst();
+            TreeNode<Integer> ele = queue.pollFirst();
             System.out.print(ele.val + ",");
 
             if (ele.left != null) {
@@ -244,7 +244,7 @@ public class BinaryTreeTraversal {
     }
 
     public static void main(String[] args) {
-        BinaryTree<Integer> root = TreeBuilder.buildCommonTree();
+        TreeNode<Integer> root = TreeBuilder.buildCommonTree();
 
         BinaryTreeTraversal treeTraversal = new BinaryTreeTraversal();
 

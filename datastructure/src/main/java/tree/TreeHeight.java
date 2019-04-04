@@ -13,7 +13,7 @@ public class TreeHeight {
      * @param <T>
      * @return
      */
-    public <T> int treeNodeHeight(BinaryTree<T> treeNode) {
+    public <T> int treeNodeHeight(TreeNode<T> treeNode) {
         if (treeNode == null) {
             return -1;
         }
@@ -27,7 +27,7 @@ public class TreeHeight {
      * @param <T>
      * @return
      */
-    public <T> int treeDeep(BinaryTree<T> root) {
+    public <T> int treeDeep(TreeNode<T> root) {
         if (root == null) {
             return -1;
         }
@@ -37,7 +37,7 @@ public class TreeHeight {
 
     public static void main(String[] args) {
         // 先序（root -> left -> right）遍历结果：4,3,1,2,5,6,7
-        BinaryTree<Integer> root = TreeBuilder.buildCommonTree();
+        TreeNode<Integer> root = TreeBuilder.buildCommonTree();
         TreeHeight height = new TreeHeight();
         System.out.println(height.treeNodeHeight(root));
         System.out.println(height.treeDeep(root));

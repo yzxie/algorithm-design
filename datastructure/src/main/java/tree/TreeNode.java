@@ -6,12 +6,12 @@ package tree;
  * @description:
  */
 
-public class BinaryTree<T> {
+public class TreeNode<T> {
     public T val;
-    public BinaryTree<T> left;
-    public BinaryTree<T> right;
+    public TreeNode<T> left;
+    public TreeNode<T> right;
 
-    public BinaryTree(T val) {
+    public TreeNode(T val) {
         this.val = val;
     }
 }
